@@ -2,6 +2,6 @@
 
 ICS4U1
 
-Final Project Culminating
+Final Culminating Project
 
 Java-based Snake game
