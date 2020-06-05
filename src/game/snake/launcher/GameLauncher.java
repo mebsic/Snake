@@ -36,7 +36,7 @@ public class GameLauncher extends JFrame {
             }
             @Override
             public void keyReleased(KeyEvent e) {
-                if ( e.getKeyCode() == KeyEvent.VK_SPACE ) {
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     setVisible(false);
                     //TODO create game window and initialize
                 }
