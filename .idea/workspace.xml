@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Game" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="585ef3d7-f0b2-4446-86f0-8369aac6da7a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -102,6 +107,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="415" y="127" key="#Project_Structure" timestamp="1591318883053">
+      <screen x="30" y="23" width="1570" height="877" />
+    </state>
+    <state x="415" y="127" key="#Project_Structure/30.23.1570.877@30.23.1570.877" timestamp="1591318883053" />
     <state x="667" y="368" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1591316609751">
       <screen x="30" y="23" width="1570" height="877" />
     </state>
@@ -111,10 +120,10 @@
     </state>
     <state x="551" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/30.23.1570.877@30.23.1570.877" timestamp="1591317930543" />
     <state x="553" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/33.23.1567.877@33.23.1567.877" timestamp="1591317854891" />
-    <state x="303" y="43" key="SettingsEditor" timestamp="1591318322604">
+    <state x="303" y="43" key="SettingsEditor" timestamp="1591318907867">
       <screen x="30" y="23" width="1570" height="877" />
     </state>
-    <state x="303" y="43" key="SettingsEditor/30.23.1570.877@30.23.1570.877" timestamp="1591318322604" />
+    <state x="303" y="43" key="SettingsEditor/30.23.1570.877@30.23.1570.877" timestamp="1591318907867" />
     <state x="415" y="201" key="Vcs.Push.Dialog.v2" timestamp="1591317726680">
       <screen x="33" y="23" width="1567" height="877" />
     </state>
