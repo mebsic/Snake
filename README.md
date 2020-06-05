@@ -1,3 +1,5 @@
 # Snake
 
-Simple Java snake game.
+ICS4U1
+Final Project Culminating
+Java-based Snake game
