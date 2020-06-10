@@ -1,5 +1,6 @@
 package game.snake.launcher;
 
+import game.snake.main.Main;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -38,7 +39,7 @@ public class GameLauncher extends JFrame {
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     setVisible(false);
-                    //TODO create game window and initialize
+                    new Main();
                 }
             }
         });
