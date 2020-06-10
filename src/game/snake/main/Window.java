@@ -28,6 +28,7 @@ public class Window extends JFrame {
             Grid.add(data);
         }
         getContentPane().setLayout(new GridLayout(20, 20, 0, 0));
+
         // start and pause Threads
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {

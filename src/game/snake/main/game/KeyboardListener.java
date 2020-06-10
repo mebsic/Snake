@@ -19,13 +19,11 @@ public class KeyboardListener extends KeyAdapter {
                     ThreadsController.directionSnake = 3;
                 }
                 break;
-
             case 37: // left key
                 if (ThreadsController.directionSnake != 1) {
                     ThreadsController.directionSnake = 2;
                 }
                 break;
-
             case 40: // down key
                 if (ThreadsController.directionSnake != 3) {
                     ThreadsController.directionSnake = 4;
