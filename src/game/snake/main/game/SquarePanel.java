@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 public class SquarePanel extends JPanel {
 
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;  // default serial version ID
 
     public SquarePanel(Color d) {
         this.setBackground(d);

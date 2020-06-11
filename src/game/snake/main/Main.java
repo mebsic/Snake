@@ -10,6 +10,7 @@ public class Main {
     }
 
     public Main() {
+        // game window properties
         Window window = new Window();
         window.setTitle("Snake");
         window.setSize(300, 300);
