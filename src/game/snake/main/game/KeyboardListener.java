@@ -6,8 +6,14 @@ import java.awt.event.KeyEvent;
 public class KeyboardListener extends KeyAdapter {
 
 
+    /**
+     * Helper method
+     * pre: checks for keyboard press
+     * post: returns direction after press
+     * @param e
+     */
     public void keyPressed(KeyEvent e) {
-        switch(e.getKeyCode()) {
+        switch (e.getKeyCode()) {
             case 39: // right key
                 // check for opposite direction
                 if (ThreadsController.directionSnake != 2) {
@@ -29,7 +35,8 @@ public class KeyboardListener extends KeyAdapter {
                     ThreadsController.directionSnake = 4;
                 }
                 break;
-            default: break;
+            default:
+                break;
         }
     }
 }

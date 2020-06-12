@@ -5,10 +5,17 @@ import javax.swing.*;
 public class Main {
 
 
+    /**
+     * Main method
+     * @param args
+     */
     public static void main(String[] args) {
         new Main();
     }
 
+    /**
+     * Constructor
+     */
     public Main() {
         // game window properties
         Window window = new Window();

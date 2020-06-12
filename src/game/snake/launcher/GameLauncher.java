@@ -13,10 +13,19 @@ import java.net.URL;
 public class GameLauncher extends JFrame {
 
 
+    /**
+     * Main method
+     * @param args
+     */
     public static void main(String[] args) {
         new GameLauncher();
     }
 
+    /**
+     * Constructor
+     * pre: initialize launcher screen and keyboard input
+     * post: display game after input
+     */
     public GameLauncher() {
         // initialize launcher screen from image URL
         try {

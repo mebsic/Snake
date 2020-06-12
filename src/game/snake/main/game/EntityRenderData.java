@@ -10,6 +10,12 @@ public class EntityRenderData {
     int color;
     public SquarePanel square;
 
+    /**
+     * Constructor
+     * pre: colors from index assigned to game objects
+     * post: return colors from index
+     * @param col
+     */
     public EntityRenderData(int col) {
         C.add(Color.DARK_GRAY); // index value 0: empty
         C.add(Color.ORANGE);     // index value 1: food for snake
@@ -18,7 +24,13 @@ public class EntityRenderData {
         square = new SquarePanel(C.get(color));
     }
 
+    /**
+     * Modifier method
+     * pre: none
+     * post: color of game object is changed
+     * @param c
+     */
     public void colorOrganizer(int c) {
-        square.ChangeColor(C.get(c));
+        square.changeColor(C.get(c));
     }
 }

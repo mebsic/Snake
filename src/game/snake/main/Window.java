@@ -1,6 +1,7 @@
 package game.snake.main;
 
 import game.snake.main.game.EntityRenderData;
+import game.snake.main.game.GridPanel;
 import game.snake.main.game.KeyboardListener;
 import java.awt.GridLayout;
 import java.awt.event.KeyListener;
@@ -15,6 +16,12 @@ public class Window extends JFrame {
     public static int width = 20;
     public static int height = 20;
 
+    /**
+     * Constructor
+     * pre: assign game threads
+     * post: initialize game and objects,
+     * wait for keyboard input
+     */
     public Window() {
         // create ArrayList that contains game Threads
         Grid = new ArrayList<ArrayList<EntityRenderData>>();
@@ -39,7 +46,7 @@ public class Window extends JFrame {
         }
 
         // initial position of Snake
-        Tuple position = new Tuple(10, 10);
+        GridPanel position = new GridPanel(10, 10);
         ThreadsController c = new ThreadsController(position);
         c.start();
         this.addKeyListener((KeyListener) new KeyboardListener());
