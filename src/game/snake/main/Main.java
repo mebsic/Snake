@@ -15,6 +15,8 @@ public class Main {
 
     /**
      * Constructor
+     * pre: none
+     * post: set window properties
      */
     public Main() {
         // game window properties

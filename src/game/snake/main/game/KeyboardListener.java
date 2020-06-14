@@ -16,23 +16,23 @@ public class KeyboardListener extends KeyAdapter {
         switch (e.getKeyCode()) {
             case 39: // right key
                 // check for opposite direction
-                if (ThreadsController.directionSnake != 2) {
-                    ThreadsController.directionSnake = 1;
+                if (ThreadControl.directionSnake != 2) {
+                    ThreadControl.directionSnake = 1;
                 }
                 break;
             case 38: // up key
-                if (ThreadsController.directionSnake != 4) {
-                    ThreadsController.directionSnake = 3;
+                if (ThreadControl.directionSnake != 4) {
+                    ThreadControl.directionSnake = 3;
                 }
                 break;
             case 37: // left key
-                if (ThreadsController.directionSnake != 1) {
-                    ThreadsController.directionSnake = 2;
+                if (ThreadControl.directionSnake != 1) {
+                    ThreadControl.directionSnake = 2;
                 }
                 break;
             case 40: // down key
-                if (ThreadsController.directionSnake != 3) {
-                    ThreadsController.directionSnake = 4;
+                if (ThreadControl.directionSnake != 3) {
+                    ThreadControl.directionSnake = 4;
                 }
                 break;
             default:

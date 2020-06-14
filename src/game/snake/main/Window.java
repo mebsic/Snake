@@ -3,6 +3,8 @@ package game.snake.main;
 import game.snake.main.game.EntityRenderData;
 import game.snake.main.game.GridPanel;
 import game.snake.main.game.KeyboardListener;
+import game.snake.main.game.ThreadControl;
+
 import java.awt.GridLayout;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -47,8 +49,8 @@ public class Window extends JFrame {
 
         // initial position of Snake
         GridPanel position = new GridPanel(10, 10);
-        ThreadsController c = new ThreadsController(position);
-        c.start();
+        ThreadControl tc = new ThreadControl(position);
+        tc.start();
         this.addKeyListener((KeyListener) new KeyboardListener());
     }
 }

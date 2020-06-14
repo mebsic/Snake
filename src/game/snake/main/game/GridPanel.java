@@ -19,13 +19,13 @@ public class GridPanel {
     }
 
     /**
-     * Accessor methods
-     * pre: none
+     * Modifier method
+     * pre: change x and y positions
      * post: returns x and y and floating coordinate
      * @param x
      * @param y
      */
-    public void getPosition(int x, int y) {
+    public void setPostion(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -36,13 +36,5 @@ public class GridPanel {
 
     public int getY() {
         return y;
-    }
-
-    public int getXf() {
-        return xf;
-    }
-
-    public int getYf() {
-        return yf;
     }
 }
