@@ -1,12 +1,10 @@
-package game.snake.main.game;
+package game.snake.main.game.Panel;
 
 public class GridPanel {
 
 
     public int x;
     public int y;
-    public int xf;
-    public int yf;
 
     /**
      * Constructor

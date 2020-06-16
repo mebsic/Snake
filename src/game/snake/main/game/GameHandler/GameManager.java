@@ -1,26 +1,24 @@
-package game.snake.main.game;
+package game.snake.main.game.GameHandler;
 
-import game.snake.launcher.GameLauncher;
-import game.snake.main.Main;
 import game.snake.main.Window;
+import game.snake.main.game.EntityManager.Entity;
+import game.snake.main.game.Panel.GridPanel;
 
 import javax.swing.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
 /**
  * Game logic using Threads
  */
-public class ThreadControl extends Thread {
+public class GameManager extends Thread {
 
 
-    ArrayList<ArrayList<EntityRenderData>> squares = new ArrayList<ArrayList<EntityRenderData>>();
+    ArrayList<ArrayList<Entity>> squares = new ArrayList<ArrayList<Entity>>();
     GridPanel headSnakePos;
-    int sizeSnake = 3; // default rendered snake size
-    long speed = 70; // default snake speed
-    public static int directionSnake;
+    int snakeSize = 3; // default rendered snake size
+    long speed = 75; // default snake speed
+    public static int directionOfSnake;
     ArrayList<GridPanel> positions = new ArrayList<GridPanel>();
     GridPanel foodPosition;
     public int score; // default game score
@@ -29,17 +27,18 @@ public class ThreadControl extends Thread {
      * Constructor
      * pre: check snake direction
      * post: assign position and spawn consumable food
-     * @param positionDepart
+     * @param position
      */
-    public ThreadControl(GridPanel positionDepart) {
-        squares = Window.Grid;
-        headSnakePos = new GridPanel(positionDepart.x, positionDepart.y);
-        directionSnake = 1;
-        // direction of snake (pointer)
-        GridPanel headPos = new GridPanel(headSnakePos.getX(), headSnakePos.getY());
-        positions.add(headPos);
+    public GameManager(GridPanel position) {
+        squares = Window.entity;
+        directionOfSnake = 1;
         foodPosition = new GridPanel(Window.height - 1, Window.width - 1);
         spawnFood(foodPosition);
+
+        // direction of snake (pointer)
+        headSnakePos = new GridPanel(position.x, position.y);
+        GridPanel headPos = new GridPanel(headSnakePos.getX(), headSnakePos.getY());
+        positions.add(headPos);
     }
 
     /**
@@ -49,7 +48,7 @@ public class ThreadControl extends Thread {
      */
     public void run() {
         while (true) {
-            moveInternal(directionSnake);
+            moveInternal(directionOfSnake);
             try {
                 checkCollision();
             } catch (IOException e) {
@@ -57,7 +56,7 @@ public class ThreadControl extends Thread {
             }
             moveExternal();
             deleteTail();
-            pause();
+            pauseGame();
             this.score = 0;
         }
     }
@@ -67,35 +66,12 @@ public class ThreadControl extends Thread {
      * pre: none
      * post: delay snake movement
      */
-    private void pause() {
+    private void pauseGame() {
         try {
             sleep(speed);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Accessor method
-     * pre: none
-     * post: score returned
-     * @param snakeScore
-     * @return
-     */
-    public int getScore(int snakeScore) {
-        this.score = snakeScore;
-        return score;
-    }
-
-    /**
-     * Modifier method
-     * pre: none
-     * post: none
-     * @param snakeScore
-     */
-    public void setScore(int snakeScore) {
-        this.score = snakeScore;
-        snakeScore += 1;
     }
 
     /**
@@ -109,15 +85,16 @@ public class ThreadControl extends Thread {
             boolean biteItself = criticalPosition.getX() == positions.get(i).getX() && criticalPosition.getY() == positions.get(i).getY();
             if (biteItself) {
                 System.out.print("\nEntity collided with itself");
-                JOptionPane.showMessageDialog(null, "Game Over...\nTry again!","Snake", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "GAME OVER!\n\nYou can't eat your own tail\nTry again...","Snake", JOptionPane.INFORMATION_MESSAGE);
                 System.exit(0);
+                setScore(0);
                 stopTheGame();
             }
         }
         boolean eatingFood = criticalPosition.getX() == foodPosition.y && criticalPosition.getY() == foodPosition.x;
         if (eatingFood) {
             System.out.print("\nEntity consumed food");
-            sizeSnake = sizeSnake + 1;
+            snakeSize = snakeSize + 1;
             setScore(score);
             System.out.print("\nScore is: " + getScore(score));
             foodPosition = getOpenArea();
@@ -133,8 +110,7 @@ public class ThreadControl extends Thread {
     private void stopTheGame() {
         System.out.println("\nEntity collision detected");
         while (true) {
-            pause();
-            setScore(0);
+            pauseGame();
         }
     }
 
@@ -145,7 +121,7 @@ public class ThreadControl extends Thread {
      * @param foodPositionIn
      */
     private void spawnFood(GridPanel foodPositionIn) {
-        squares.get(foodPositionIn.x).get(foodPositionIn.y).colorOrganizer(1);
+        squares.get(foodPositionIn.x).get(foodPositionIn.y).changeColor(1);
     }
 
     /**
@@ -215,7 +191,7 @@ public class ThreadControl extends Thread {
         for (GridPanel t : positions) {
             int y = t.getX();
             int x = t.getY();
-            squares.get(x).get(y).colorOrganizer(0);
+            squares.get(x).get(y).changeColor(0);
         }
     }
 
@@ -226,16 +202,16 @@ public class ThreadControl extends Thread {
      * source/credit: https://www.geeksforgeeks.org/remove-element-arraylist-java/
      */
     private void deleteTail() {
-        int tail = sizeSnake;
+        int tail = snakeSize;
         for (int i = positions.size() - 1; i >= 0; i--) {
             if (tail == 0) {
                 GridPanel t = positions.get(i);
-                squares.get(t.y).get(t.x).colorOrganizer(2);
+                squares.get(t.y).get(t.x).changeColor(2);
             } else {
                 tail--;
             }
         }
-        tail = sizeSnake;
+        tail = snakeSize;
         for (int i = positions.size() - 1; i >= 0; i--) {
             if (tail == 0) {
                 positions.remove(i);
@@ -243,5 +219,28 @@ public class ThreadControl extends Thread {
                 tail--;
             }
         }
+    }
+
+    /**
+     * Accessor method
+     * pre: none
+     * post: score returned
+     * @param snakeScore
+     * @return
+     */
+    public int getScore(int snakeScore) {
+        this.score = snakeScore;
+        return score;
+    }
+
+    /**
+     * Modifier method
+     * pre: none
+     * post: none
+     * @param snakeScore
+     */
+    public void setScore(int snakeScore) {
+        this.score = snakeScore;
+        snakeScore += 1;
     }
 }

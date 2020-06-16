@@ -1,9 +1,11 @@
-package game.snake.main.game;
+package game.snake.main.game.GameHandler;
+
+import game.snake.main.game.GameHandler.GameManager;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class KeyboardListener extends KeyAdapter {
+public class KeyListener extends KeyAdapter {
 
 
     /**
@@ -16,23 +18,23 @@ public class KeyboardListener extends KeyAdapter {
         switch (e.getKeyCode()) {
             case 39: // right key
                 // check for opposite direction
-                if (ThreadControl.directionSnake != 2) {
-                    ThreadControl.directionSnake = 1;
+                if (GameManager.directionOfSnake != 2) {
+                    GameManager.directionOfSnake = 1;
                 }
                 break;
             case 38: // up key
-                if (ThreadControl.directionSnake != 4) {
-                    ThreadControl.directionSnake = 3;
+                if (GameManager.directionOfSnake != 4) {
+                    GameManager.directionOfSnake = 3;
                 }
                 break;
             case 37: // left key
-                if (ThreadControl.directionSnake != 1) {
-                    ThreadControl.directionSnake = 2;
+                if (GameManager.directionOfSnake != 1) {
+                    GameManager.directionOfSnake = 2;
                 }
                 break;
             case 40: // down key
-                if (ThreadControl.directionSnake != 3) {
-                    ThreadControl.directionSnake = 4;
+                if (GameManager.directionOfSnake != 3) {
+                    GameManager.directionOfSnake = 4;
                 }
                 break;
             default:

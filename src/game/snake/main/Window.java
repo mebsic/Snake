@@ -1,20 +1,18 @@
 package game.snake.main;
 
-import game.snake.main.game.EntityRenderData;
-import game.snake.main.game.GridPanel;
-import game.snake.main.game.KeyboardListener;
-import game.snake.main.game.ThreadControl;
+import game.snake.main.game.EntityManager.Entity;
+import game.snake.main.game.Panel.GridPanel;
+import game.snake.main.game.GameHandler.KeyListener;
+import game.snake.main.game.GameHandler.GameManager;
 
 import java.awt.GridLayout;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
 public class Window extends JFrame {
 
 
-    private static final long serialVersionUID = -2542001418764869760L; // randomly-generated serial ID
-    public static ArrayList<ArrayList<EntityRenderData>> Grid;
+    public static ArrayList<ArrayList<Entity>> entity;
     public static int width = 20;
     public static int height = 20;
 
@@ -26,31 +24,30 @@ public class Window extends JFrame {
      */
     public Window() {
         // create ArrayList that contains game Threads
-        Grid = new ArrayList<ArrayList<EntityRenderData>>();
-        ArrayList<EntityRenderData> data;
+        entity = new ArrayList<ArrayList<Entity>>();
+        ArrayList<Entity> data;
 
         // add game Threads to ArrayList
         for (int i = 0; i < width; i++) {
-            data = new ArrayList<EntityRenderData>();
+            data = new ArrayList<Entity>();
             for (int j = 0; j < height; j++) {
-                EntityRenderData c = new EntityRenderData(2);
+                Entity c = new Entity(2);
                 data.add(c);
             }
-            Grid.add(data);
+            entity.add(data);
         }
-        getContentPane().setLayout(new GridLayout(20, 20, 0, 0));
-
         // start and pause game Threads
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                getContentPane().add(Grid.get(i).get(j).square);
+                getContentPane().add(entity.get(i).get(j).square);
             }
         }
 
         // initial position of Snake
+        getContentPane().setLayout(new GridLayout(20, 20, 0, 0));
         GridPanel position = new GridPanel(10, 10);
-        ThreadControl tc = new ThreadControl(position);
-        tc.start();
-        this.addKeyListener((KeyListener) new KeyboardListener());
+        GameManager snake = new GameManager(position);
+        snake.start();
+        this.addKeyListener(new KeyListener());
     }
 }
