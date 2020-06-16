@@ -17,9 +17,9 @@ public class EntityRenderData {
      * @param col
      */
     public EntityRenderData(int col) {
-        C.add(Color.DARK_GRAY); // index value 0: empty
-        C.add(Color.ORANGE);     // index value 1: food for snake
-        C.add(Color.WHITE);    // index value 2: snake object
+        C.add(Color.GREEN); // index value 0: snake
+        C.add(Color.RED);     // index value 1: food for snake
+        C.add(Color.BLACK);    // index value 2: background color
         color = col;
         square = new SquarePanel(C.get(color));
     }

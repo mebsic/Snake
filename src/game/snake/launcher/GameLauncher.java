@@ -29,7 +29,7 @@ public class GameLauncher extends JFrame {
     public GameLauncher() {
         // initialize launcher screen from image URL
         try {
-            BufferedImage img = ImageIO.read(new URL("https://insertlauncherscreenhere.com"));
+            BufferedImage img = ImageIO.read(new URL("https://i.imgur.com/LOCqoO3.png"));
             JLabel image = new JLabel(new ImageIcon(img));
             getContentPane().add(image, BorderLayout.CENTER);
         } catch (IOException e) {
@@ -54,7 +54,7 @@ public class GameLauncher extends JFrame {
         });
 
         // launcher window properties
-        setSize(600, 600);
+        setSize(600, 500);
         setResizable(false);
         setLocationRelativeTo(null); // centers window on screen
         setVisible(true);

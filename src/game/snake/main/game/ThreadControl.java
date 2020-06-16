@@ -1,6 +1,13 @@
 package game.snake.main.game;
 
+import game.snake.launcher.GameLauncher;
+import game.snake.main.Main;
 import game.snake.main.Window;
+
+import javax.swing.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -12,11 +19,11 @@ public class ThreadControl extends Thread {
     ArrayList<ArrayList<EntityRenderData>> squares = new ArrayList<ArrayList<EntityRenderData>>();
     GridPanel headSnakePos;
     int sizeSnake = 3; // default rendered snake size
-    long speed = 50; // default snake speed
+    long speed = 70; // default snake speed
     public static int directionSnake;
     ArrayList<GridPanel> positions = new ArrayList<GridPanel>();
     GridPanel foodPosition;
-    public int score = 0; // default game score
+    public int score; // default game score
 
     /**
      * Constructor
@@ -43,7 +50,11 @@ public class ThreadControl extends Thread {
     public void run() {
         while (true) {
             moveInternal(directionSnake);
-            checkCollision();
+            try {
+                checkCollision();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             moveExternal();
             deleteTail();
             pause();
@@ -54,7 +65,7 @@ public class ThreadControl extends Thread {
     /**
      * Helper method
      * pre: none
-     * post: delay between snake movement
+     * post: delay snake movement
      */
     private void pause() {
         try {
@@ -84,6 +95,7 @@ public class ThreadControl extends Thread {
      */
     public void setScore(int snakeScore) {
         this.score = snakeScore;
+        snakeScore += 1;
     }
 
     /**
@@ -91,21 +103,23 @@ public class ThreadControl extends Thread {
      * pre: get snake position and direction
      * post: verify snake is biting or consuming
      */
-    private void checkCollision() {
+    private void checkCollision() throws IOException {
         GridPanel criticalPosition = positions.get(positions.size() - 1);
         for (int i = 0; i <= positions.size() - 2; i++) {
             boolean biteItself = criticalPosition.getX() == positions.get(i).getX() && criticalPosition.getY() == positions.get(i).getY();
             if (biteItself) {
-                System.out.print("Entity collided with itself");
+                System.out.print("\nEntity collided with itself");
+                JOptionPane.showMessageDialog(null, "Game Over...\nTry again!","Snake", JOptionPane.INFORMATION_MESSAGE);
+                System.exit(0);
                 stopTheGame();
             }
         }
         boolean eatingFood = criticalPosition.getX() == foodPosition.y && criticalPosition.getY() == foodPosition.x;
         if (eatingFood) {
-            System.out.print("Entity consumed food");
+            System.out.print("\nEntity consumed food");
             sizeSnake = sizeSnake + 1;
-            setScore(score + 1);
-            System.out.print("Score is: " + getScore(score));
+            setScore(score);
+            System.out.print("\nScore is: " + getScore(score));
             foodPosition = getOpenArea();
             spawnFood(foodPosition);
         }
@@ -117,7 +131,7 @@ public class ThreadControl extends Thread {
      * post: stop game if collision detected
      */
     private void stopTheGame() {
-        System.out.println("Entity collision detected");
+        System.out.println("\nEntity collision detected");
         while (true) {
             pause();
             setScore(0);
