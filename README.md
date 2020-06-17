@@ -7,6 +7,7 @@ Final Culminating Project
 To run the game with scoring system, use local console and enter the following command:
 
 (you are required to enter the directory of the jar)
+
 java -jar Snake.jar
 
 # Screenshots
