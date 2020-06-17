@@ -4,9 +4,9 @@ ICS4U1
 Final Culminating Project
 
 # Usage
-(you are required to enter the directory of the jar before this step)
+(you are required to locate the directory of the jar)
 
-To run the game with scoring system, use local console and enter the following command:
+To run the game with the scoring system, enter the following console command:
 
 java -jar Snake.jar
 
