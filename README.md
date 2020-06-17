@@ -11,4 +11,4 @@ Java-based Snake game
 
 ![2](https://i.imgur.com/s4CSUU7.png)
 
-![3](https://i.imgur.com/9H48xBw.png)
+![3](https://i.imgur.com/tJgxsIk.png)
