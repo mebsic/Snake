@@ -4,7 +4,7 @@ ICS4U1
 Final Culminating Project
 
 # Usage
-Download the game [title](https://github.com/mebsic/Snake/releases/tag/0.1 "here") 
+Download the game [here](https://github.com/mebsic/Snake/releases/tag/0.1 "here") 
 
 # Scoring system
 (this requires entering the local directory of the jar file)
