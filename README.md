@@ -6,7 +6,7 @@ Final Culminating Project
 # Usage
 (this requires entering the local directory of the jar file)
 
-An example of how to locate your downloads directory: $ cd /Downloads/Snake.jar
+An example of how to locate your downloads directory: $ cd /Downloads
 
 To run the game with the scoring system, enter the following console command: $ java -jar Snake.jar
 
