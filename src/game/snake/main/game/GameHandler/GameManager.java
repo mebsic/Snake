@@ -3,7 +3,6 @@ package game.snake.main.game.GameHandler;
 import game.snake.main.Window;
 import game.snake.main.game.EntityManager.Entity;
 import game.snake.main.game.Panel.GridPanel;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,14 +13,17 @@ import java.util.ArrayList;
 public class GameManager extends Thread {
 
 
+    // entity manager variables
     ArrayList<ArrayList<Entity>> squares = new ArrayList<ArrayList<Entity>>();
+    ArrayList<GridPanel> positions = new ArrayList<GridPanel>();
     GridPanel headSnakePos;
+    GridPanel foodPosition;
+
+    // game variables
+    public static int directionOfSnake;
+    public int score; // default game score
     int snakeSize = 3; // default rendered snake size
     long speed = 75; // default snake speed
-    public static int directionOfSnake;
-    ArrayList<GridPanel> positions = new ArrayList<GridPanel>();
-    GridPanel foodPosition;
-    public int score; // default game score
 
     /**
      * Constructor
@@ -57,7 +59,6 @@ public class GameManager extends Thread {
             moveExternal();
             deleteTail();
             pauseGame();
-            this.score = 0;
         }
     }
 
@@ -85,9 +86,9 @@ public class GameManager extends Thread {
             boolean biteItself = criticalPosition.getX() == positions.get(i).getX() && criticalPosition.getY() == positions.get(i).getY();
             if (biteItself) {
                 System.out.print("\nEntity collided with itself");
-                JOptionPane.showMessageDialog(null, "GAME OVER!\n\nYou can't eat your own tail\nTry again...","Snake", JOptionPane.INFORMATION_MESSAGE);
+
+                JOptionPane.showMessageDialog(null, "Game Over!\n\nYou can't eat your own tail!\nTry again...","Snake", JOptionPane.INFORMATION_MESSAGE);
                 System.exit(0);
-                setScore(0);
                 stopTheGame();
             }
         }
@@ -95,8 +96,11 @@ public class GameManager extends Thread {
         if (eatingFood) {
             System.out.print("\nEntity consumed food");
             snakeSize = snakeSize + 1;
-            setScore(score);
+
+            // score handler
+            score++;
             System.out.print("\nScore is: " + getScore(score));
+
             foodPosition = getOpenArea();
             spawnFood(foodPosition);
         }
@@ -155,28 +159,27 @@ public class GameManager extends Thread {
     private void moveInternal(int dir) {
         switch (dir) {
             case 4: // moving down
-                headSnakePos.setPostion(headSnakePos.x, (headSnakePos.y + 1) % 20);
+                headSnakePos.setPosition(headSnakePos.x, (headSnakePos.y + 1) % 20);
                 positions.add(new GridPanel(headSnakePos.x, headSnakePos.y));
                 break;
             case 3: // moving up
                 if (headSnakePos.y - 1 < 0) {
-                    headSnakePos.setPostion(headSnakePos.x, 19);
+                    headSnakePos.setPosition(headSnakePos.x, 19);
                 } else {
-                    headSnakePos.setPostion(headSnakePos.x, Math.abs(headSnakePos.y - 1) % 20);
+                    headSnakePos.setPosition(headSnakePos.x, Math.abs(headSnakePos.y - 1) % 20);
                 }
                 positions.add(new GridPanel(headSnakePos.x, headSnakePos.y));
                 break;
             case 2: // moving left
                 if (headSnakePos.x - 1 < 0) {
-                    headSnakePos.setPostion(19, headSnakePos.y);
+                    headSnakePos.setPosition(19, headSnakePos.y);
                 } else {
-                    headSnakePos.setPostion(Math.abs(headSnakePos.x - 1) % 20, headSnakePos.y);
+                    headSnakePos.setPosition(Math.abs(headSnakePos.x - 1) % 20, headSnakePos.y);
                 }
                 positions.add(new GridPanel(headSnakePos.x, headSnakePos.y));
-
                 break;
             case 1: // moving right
-                headSnakePos.setPostion(Math.abs(headSnakePos.x + 1) % 20, headSnakePos.y);
+                headSnakePos.setPosition(Math.abs(headSnakePos.x + 1) % 20, headSnakePos.y);
                 positions.add(new GridPanel(headSnakePos.x, headSnakePos.y));
                 break;
         }
@@ -230,17 +233,6 @@ public class GameManager extends Thread {
      */
     public int getScore(int snakeScore) {
         this.score = snakeScore;
-        return score;
-    }
-
-    /**
-     * Modifier method
-     * pre: none
-     * post: none
-     * @param snakeScore
-     */
-    public void setScore(int snakeScore) {
-        this.score = snakeScore;
-        snakeScore += 1;
+        return snakeScore;
     }
 }

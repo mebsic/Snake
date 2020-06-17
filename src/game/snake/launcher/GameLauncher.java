@@ -36,6 +36,15 @@ public class GameLauncher extends JFrame {
             e.printStackTrace();
         }
 
+        // launcher window properties
+        setSize(600, 500);
+        setResizable(false);
+        setLocationRelativeTo(null); // centers window on screen
+        setVisible(true);
+        setTitle("Snake Launcher");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        requestFocus();
+
         // keyboard listener to start game
         addKeyListener(new KeyListener() {
             @Override
@@ -52,14 +61,5 @@ public class GameLauncher extends JFrame {
                 }
             }
         });
-
-        // launcher window properties
-        setSize(600, 500);
-        setResizable(false);
-        setLocationRelativeTo(null); // centers window on screen
-        setVisible(true);
-        setTitle("Snake Launcher");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        requestFocus();
     }
 }

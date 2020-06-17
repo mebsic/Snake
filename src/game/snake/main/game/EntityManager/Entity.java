@@ -1,7 +1,6 @@
 package game.snake.main.game.EntityManager;
 
 import game.snake.main.game.Panel.SquarePanel;
-
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -9,8 +8,8 @@ public class Entity {
 
 
     ArrayList<Color> C = new ArrayList<Color>();
-    int color;
     public SquarePanel square;
+    int color;
 
     /**
      * Constructor

@@ -1,7 +1,5 @@
 package game.snake.main.game.GameHandler;
 
-import game.snake.main.game.GameHandler.GameManager;
-
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 

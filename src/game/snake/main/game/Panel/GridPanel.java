@@ -23,7 +23,7 @@ public class GridPanel {
      * @param x
      * @param y
      */
-    public void setPostion(int x, int y) {
+    public void setPosition(int x, int y) {
         this.x = x;
         this.y = y;
     }

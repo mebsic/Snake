@@ -7,7 +7,7 @@ import game.snake.main.game.GameHandler.GameManager;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class Window extends JFrame {
 
@@ -36,6 +36,7 @@ public class Window extends JFrame {
             }
             entity.add(data);
         }
+
         // start and pause game Threads
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -47,7 +48,9 @@ public class Window extends JFrame {
         getContentPane().setLayout(new GridLayout(20, 20, 0, 0));
         GridPanel position = new GridPanel(10, 10);
         GameManager snake = new GameManager(position);
-        snake.start();
+
+        // start game
         this.addKeyListener(new KeyListener());
+        snake.start();
     }
 }

@@ -1,7 +1,7 @@
 package game.snake.main.game.Panel;
 
 import java.awt.Color;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class SquarePanel extends JPanel {
 

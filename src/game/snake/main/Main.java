@@ -13,9 +13,9 @@ public class Main {
     public Main() {
         // game window properties
         Window window = new Window();
-        window.setTitle("Snake");
         window.setSize(500, 500);
         window.setVisible(true);
+        window.setTitle("Snake");
         window.setLocationRelativeTo(null);
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
