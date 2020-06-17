@@ -4,7 +4,9 @@ ICS4U1
 Final Culminating Project
 
 # Usage
-(this requires entering the local directory of the jar)
+(this requires entering the local directory of the jar file)
+
+Locate your directory using the "cd" command
 
 To run the game with the scoring system, enter the following console command:
 
