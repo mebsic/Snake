@@ -3,7 +3,7 @@
 ICS4U1
 Final Culminating Project
 
-# Usage
+# Playing
 Download the game [here](https://github.com/mebsic/Snake/releases/tag/0.1 "here") 
 
 # Scoring system
