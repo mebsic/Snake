@@ -10,6 +10,14 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+* Tony Deleanu & Cedric Sarmiento
+* Mr Vittorio
+* ICS4U1
+* Final Culminating
+* 15 Jun. 2020
+*/
+
 public class GameLauncher extends JFrame {
 
 
