@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
-* Mr Vittorio
 * Final Culminating
 */
 
